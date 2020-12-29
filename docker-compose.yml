@@ -1,0 +1,32 @@
+version: "3"
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    volumes:
+        - ./:/app
+    ports:
+      - "3000:3000"
+    command: [ "npm", "run", "dev" ]
+    env_file:
+      - ./.env.dev
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db:/data/db
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    depends_on: [mongo]
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
