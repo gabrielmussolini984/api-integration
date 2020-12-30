@@ -7,7 +7,6 @@ services:
         - ./:/app
     ports:
       - "3000:3000"
-    command: [ "npm", "run", "dev" ]
     env_file:
       - ./.env.dev
   mongo:
