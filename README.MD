@@ -36,6 +36,7 @@ The command will upload all the services necessary for the application to work, 
 
 [POST] http://localhost:3000/opportunities
 - Search for the opportunities won registered in the Pipeline and send to a queue, the consume of the same inserts in the bling and register in the database.
+
 [GET] http://localhost:3000/opportunities
 - Search all opportunities won registered in the database.(Accept paginate, standard: ?page=0&limit=10).
 
