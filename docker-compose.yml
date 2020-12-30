@@ -29,3 +29,14 @@ services:
       ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: root
+
+  rabbitmq:
+    image: 'rabbitmq:3.8-management-alpine'
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - './rabbitmq_data:/var/lib/rabbitmq/mnesia'
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
