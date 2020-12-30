@@ -3,6 +3,7 @@ import logger from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
 import routes from './routes';
+import './consumers';
 
 const app = express();
 app.use(logger('dev'));
